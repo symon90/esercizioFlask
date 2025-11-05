@@ -66,7 +66,9 @@
                         <div class="col-4" v-if="metric.data_points && metric.data_points.length">
                             
                             <LineChart :labels="metric.data_points.map(dp => dp.date)"
-                                :values="metric.data_points.map(dp => dp.average)" />
+                                :values="metric.data_points.map(dp => dp.average)"
+                                :min="metric.data_points.map(dp => dp.min)" :max="metric.data_points.map(dp => dp.max)"
+                                :weighted_average="metric.weighted_average" />
 
                         </div>
                     </section>

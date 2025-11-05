@@ -30,11 +30,11 @@ def get_station(station_id):
 # modifica del json per mostrare solo gli ultimi 7 giorni di misurazioni e calcolare la media ponderata
 def modifyed_data(data):
     translater= Translator()
-    n_sample_size=0
-    n_zero_sample_size=0
-    weighted_average=0
     for metric in data['metrics']:
         metric['data_points'] = metric['data_points'][-7:]
+        n_sample_size=0
+        n_zero_sample_size=0
+        weighted_average=0
         metric['type']= translater.translate(metric['type'], dest='it').text
         for data_point in metric['data_points']:
             if data_point['sample_size']:

@@ -20,6 +20,18 @@ export default {
         values: {
             type: Array,
             required: true
+        },
+        min:{
+            type:Array,
+            required:false
+        },
+        max:{
+            type:Array,
+            required:false
+        },
+        weighted_average:{
+            type:Number,
+            required:false
         }
     },
     computed: {
@@ -37,6 +49,37 @@ export default {
                         tension: 0.2,
                         pointRadius: 2,
 
+                    },
+                    {
+                        label: 'Minimo',
+                        backgroundColor: 'rgba(153,102,255,0.2)',
+                        borderColor: 'rgba(153,102,255,1)',
+                        borderWidth: 1,
+                        data: this.min || [],
+                        fill: false,
+                        tension: 0.2,
+                        pointRadius: 2,
+                    },
+                    {
+                        label: 'Massimo',
+                        backgroundColor: 'rgba(255,159,64,0.2)',
+                        borderColor: 'rgba(255,159,64,1)',
+                        borderWidth: 1,
+                        data: this.max || [],
+                        fill: false,
+                        tension: 0.2,
+                        pointRadius: 2,
+                    },
+                    {
+                        label: 'Media ponderata',
+                        backgroundColor: 'rgba(255,99,132,0.2)',
+                        borderColor: 'rgba(255,99,132,1)',
+                        borderWidth: 1,
+                        data: Array(this.labels.length).fill(this.weighted_average) || [],
+                        fill: false,
+                        
+                        tension: 0.2,
+                        pointRadius: 0,
                     }
                 ]
             }
