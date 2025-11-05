@@ -26,3 +26,6 @@ qui installiamo tutte le dipendenze con
 - npm install
 
 Dovrebbero installarsi Vue.js per gestire il frontend, Axios per comunicare tra frontend e backend, bootstrap per la gestione layout e chart.js per i grafici
+
+Avviare il frontend con
+-npm run dev
