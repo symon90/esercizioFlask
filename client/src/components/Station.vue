@@ -34,9 +34,12 @@
                     <p v-if="metric.type" class="fw-bold">Tipologia: <span>
                             {{ metric.type }}
                         </span></p>
-                    <p v.if="metric.weighted_average" class="fw-bold">Media ponderata: <span>{{ metric.weighted_average
-                    }}</span>
+                    <p v-if="metric.weighted_average"
+                        class="fw-bold bg-primary text-white text-center p-3 rounded shadow-sm">
+                        Media ponderata:
+                        <span class="fw-semibold">{{ metric.weighted_average }}</span>
                     </p>
+                    
                     <p v-if="metric.n_zero_sample_size" class="fw-bold">Giorni senza misurazioni:
                         {{ metric.n_zero_sample_size }}</p>
                     <section class="row">
@@ -64,7 +67,7 @@
                         </div>
 
                         <div class="col-4" v-if="metric.data_points && metric.data_points.length">
-                            
+
                             <LineChart :labels="metric.data_points.map(dp => dp.date)"
                                 :values="metric.data_points.map(dp => dp.average)"
                                 :min="metric.data_points.map(dp => dp.min)" :max="metric.data_points.map(dp => dp.max)"
@@ -95,7 +98,7 @@ export default {
     methods: {
         getStationDetails() {
             const stationId = this.$route.params.id;
-            axios.get(`http://localhost:5000/station/${stationId}`)
+            axios.get(`http://localhost:5000/api/stations/${stationId}`)
                 .then(response => {
                     this.stationDetails = response.data;
                 }).catch(error => {

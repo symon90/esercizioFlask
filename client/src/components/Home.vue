@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         getJson() {
-            axios.get('http://localhost:5000/')
+            axios.get('http://localhost:5000/api/stations')
                 .then(response => {
                     this.stationJson= response.data;
                 }).catch(error => {
