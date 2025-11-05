@@ -14,6 +14,20 @@ def hello_world():
     data= response.json()
     stations=data.get('stations', [])
     return jsonify(stations)
+
+@app.route('/station/<station_id>', methods=['GET'])
+def get_station(station_id):
+    response= requests.get(BASE_URL + f'stations/{station_id}')
+    data= response.json()
+    data=modifyed_data(data)
+    
+    return jsonify(data)
     
 
     
+
+def modifyed_data(data):
+    for metric in data['metrics']:
+        metric['data_points'] = metric['data_points'][-5:]
+    
+    return data

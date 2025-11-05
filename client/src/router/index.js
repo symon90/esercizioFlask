@@ -10,7 +10,11 @@ const router = createRouter({
       name: 'home',
       component: Home
     },
-   
+   {
+    path: '/station/:id',
+    name: 'station',
+    component: () => import('../components/Station.vue')
+   }
   ]
 })
 

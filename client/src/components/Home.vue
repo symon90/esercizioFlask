@@ -1,13 +1,26 @@
 <template>
-   <!-- <pre>{{ JSON.stringify(msg,null,2) }}</pre>
-     -->
-
-     {{ stationJson }}
-   <ul>
-    <li v-for="station in stationJson" :key="station.id">
-        {{ station.name }} - {{ station.address }}
-    </li>
-   </ul>
+  <h1 class="text-center">Lista delle stazioni</h1>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Indirizzo</th>
+      <th scope="col">Sito</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="station in stationJson" :key="station.id">
+        <th scope="row">{{ station.grafana_id }}</th>
+        <td>{{ station.name }}</td>
+        <td>{{ station.address }}</td>
+        <td>{{ station.site }}</td>
+        <td><a :href="`/station/${station.id}`">Dettagli</a></td>
+    </tr>
+  </tbody>
+</table>
+   
 
 </template>
 <script>
