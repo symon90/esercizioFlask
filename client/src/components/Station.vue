@@ -57,7 +57,7 @@
                                         <td>{{ value.min }}</td>
                                         <td>{{ value.max }}</td>
                                         <td>{{ value.average }}</td>
-                                        <td>{{ value.sample_size }}</td>
+                                        <td>{{ value.sample_size ? value.sample_size : 'N/D' }}</td>
                                     </tr>
                                 </tbody>
                             </table>
