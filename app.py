@@ -25,9 +25,21 @@ def get_station(station_id):
     
 
     
-
+# modifica del json per mostrare solo gli ultimi 7 giorni di misurazioni e calcolare la media ponderata
 def modifyed_data(data):
+    n_sample_size=0
+    n_zero_sample_size=0
+    weighted_average=0
     for metric in data['metrics']:
-        metric['data_points'] = metric['data_points'][-5:]
+        metric['data_points'] = metric['data_points'][-7:]
     
+        for data_point in metric['data_points']:
+            if data_point['sample_size']:
+                weighted_average += data_point['average'] * data_point['sample_size']
+                n_sample_size += data_point['sample_size']
+            else:
+                n_zero_sample_size +=1
+        metric['weighted_average']= weighted_average / n_sample_size if n_sample_size!=0 else 0
+        metric['n_zero_sample_size']= n_zero_sample_size
+       
     return data

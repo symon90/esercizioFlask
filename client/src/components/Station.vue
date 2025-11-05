@@ -1,12 +1,14 @@
 <template>
     <div class="home">
         <h1 class="text-center">Dettagli stazione</h1>
+        <a href="/" class="btn btn-primary">Ritorna alla home</a>
+
         <h2>Nome: {{ stationDetails.name }}</h2>
         <address>Indirizzo: {{ stationDetails.address }}</address>
         <p>Sito: {{ stationDetails.site }}</p>
         <p>Id Grafana: {{ stationDetails.grafana_id }}</p>
+       
 
-        <!-- {{ JSON.stringify(stationDetails.metrics, null, 2) }} -->
         <div v-for="metric in stationDetails.metrics" :key="data_points">
             <div>
 
@@ -18,18 +20,20 @@
                 <p v-if="metric.unit_of_measurement" class="fw-bold">Unità di misura: <span>
                         {{ metric.unit_of_measurement }}
                     </span></p>
-                    <p v-if="metric.limit" class="fw-bold">Limite: <span>
+                <p v-if="metric.limit" class="fw-bold">Limite: <span>
                         {{ metric.limit }}
                     </span></p>
-                    <p v-if="metric.limit_unit_of_measurement" class="fw-bold">Unità di misura del limite: <span>
+                <p v-if="metric.limit_unit_of_measurement" class="fw-bold">Unità di misura del limite: <span>
                         {{ metric.limit_unit_of_measurement }}
                     </span></p>
-                    <p v-if="metric.molar_mass" class="fw-bold">Massa molare: <span>
+                <p v-if="metric.molar_mass" class="fw-bold">Massa molare: <span>
                         {{ metric.molar_mass }}
                     </span></p>
-                    <p v-if="metric.type" class="fw-bold">Tipologia: <span>
+                <p v-if="metric.type" class="fw-bold">Tipologia: <span>
                         {{ metric.type }}
                     </span></p>
+                <p v.if="metric.weighted_average" class="fw-bold">Media ponderata: <span>{{ metric.weighted_average }}</span></p>
+                <p v-if="metric.n_zero_sample_size " class="fw-bold">Giorni senza misurazioni: {{ metric.n_zero_sample_size }}</p>
 
             </div>
 
@@ -57,7 +61,7 @@
         </div>
 
 
-        <!-- {{ stationDetails }} -->
+        <a href="/" class="btn btn-primary">Ritorna alla home</a>
     </div>
 </template>
 <script>
